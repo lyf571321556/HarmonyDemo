@@ -23,5 +23,16 @@
         }
       ]
     }
-  ]
+  ,{
+      "name": "second",
+      "srcPath": "./second",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    }]
 }
