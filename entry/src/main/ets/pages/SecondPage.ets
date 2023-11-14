@@ -1,6 +1,6 @@
 import router from '@ohos.router'
 import hilog from '@ohos.hilog';
-import featureAbility from '@ohos.ability.featureAbility';
+import common from '@ohos.app.ability.common'
 @Entry
 @Component
 struct SecondPage {
@@ -22,15 +22,17 @@ struct SecondPage {
         Button('新窗口')
           .onClick(()=>{
             let want = {
-              // deviceId: "", // deviceId为空表示本设备
-              bundleName: "com.example.myapplication",
-              abilityName: "Second_entryAbility",
-              // moduleName: "device", // moduleName非必选，默认为当前UIAbility所在的Module
+              deviceId: "", // deviceId为空表示本设备
+              bundleName: "com.example.harmonydemo",
+              abilityName: "SecondAbility",
+              moduleName: "second", // moduleName非必选，默认为当前UIAbility所在的Module
               // parameters: { // 自定义信息 specified 模式
               //   instanceKey: getInstance(),
               // },
             }
-            getContext(this).getApplicationContext().startAbility({want:want}).then((data)=>{
+
+            let context =getContext(this) as common.UIAbilityContext;
+            context.startAbility(want).then((data)=>{
               hilog.info(0x0001,'Second Ability','打开一个新Ability成功')
             }).catch((error)=>{
               hilog.info(0x0001,'Second Ability','打开一个新Ability失败')
