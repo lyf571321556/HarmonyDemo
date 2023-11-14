@@ -30,7 +30,7 @@ struct SecondPage {
               //   instanceKey: getInstance(),
               // },
             }
-            featureAbility.startAbility({want:want}).then((data)=>{
+            getContext(this).getApplicationContext().startAbility({want:want}).then((data)=>{
               hilog.info(0x0001,'Second Ability','打开一个新Ability成功')
             }).catch((error)=>{
               hilog.info(0x0001,'Second Ability','打开一个新Ability失败')
@@ -41,4 +41,5 @@ struct SecondPage {
     }
     .height('100%')
   }
+
 }
