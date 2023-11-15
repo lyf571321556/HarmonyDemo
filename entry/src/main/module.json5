@@ -3,7 +3,8 @@
     "name": "entry",
     "type": "entry",
     "description": "$string:module_desc",
-    "mainElement": "EntryAbility",
+//    "mainElement": "EntryAbility",
+    "srcEntry": "./ets/abilitystage/MyAbilityStage.ts",
     "deviceTypes": [
       "phone",
       "tablet"
