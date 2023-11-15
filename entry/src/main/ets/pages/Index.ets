@@ -13,13 +13,18 @@ struct Index {
           .fontSize(50)
           .fontWeight(FontWeight.Bold)
         Text(this.params)
-        Button('打开').onClick((event: ClickEvent) => {
+        Button('打开新页面').onClick((event: ClickEvent) => {
           router.pushUrl({url:'pages/SecondPage',params:{"params":'我是从第一页传过来的'}}).then((value)=>{
             hilog.info(0x0001,'Index Page','打开新页面成功，并且返回'+value,)
           },(reason)=>{
             hilog.info(0x0001,'Index Page','打开新页面失败，并且返回'+reason,)
           })
         })
+
+        Button('基础组件使用')
+          .onClick(()=>{
+            router.pushUrl({url:'pages/BasicComponentsPage'});
+          })
       }
       .width('100%')
     }

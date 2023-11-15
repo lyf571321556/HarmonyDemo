@@ -27,6 +27,13 @@
     {
       "name": "row_padding",
       "value": "12vp"
+    },{
+      "name": "image_size",
+      "value": "75vp"
+    },
+    {
+      "name": "button_size",
+      "value": "30fp"
     }
   ]
 }

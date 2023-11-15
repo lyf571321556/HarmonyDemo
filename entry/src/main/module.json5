@@ -3,7 +3,7 @@
     "name": "entry",
     "type": "entry",
     "description": "$string:module_desc",
-//    "mainElement": "EntryAbility",
+    //    "mainElement": "EntryAbility",
     "srcEntry": "./ets/abilitystage/MyAbilityStage.ts",
     "deviceTypes": [
       "phone",
@@ -12,6 +12,11 @@
     "deliveryWithInstall": true,
     "installationFree": false,
     "pages": "$profile:main_pages",
+    "requestPermissions": [
+      {
+        "name": "ohos.permission.INTERNET"
+      }
+    ],
     "abilities": [
       {
         "name": "EntryAbility",
