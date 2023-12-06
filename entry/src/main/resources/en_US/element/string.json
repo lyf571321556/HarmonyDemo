@@ -35,6 +35,10 @@
     {
       "name": "long_str",
       "value": "当文本内容较多超出了Text组件范围的时候，您可以使用textOverflow设置文本截取方式"
+    },
+    {
+      "name": "register_account",
+      "value": "注册账号"
     }
   ]
 }

@@ -1,3 +1,5 @@
+import hilog from '@ohos.hilog';
+import resourceManager from '@ohos.resourceManager';
 @Entry
 @Component
 struct BasicComponentsPage {
@@ -6,7 +8,6 @@ struct BasicComponentsPage {
   @State password: string = ''
 
   build() {
-    Row() {
       Column() {
         Text(this.message)
           .fontSize($r('app.float.font_size'))
@@ -81,12 +82,19 @@ struct BasicComponentsPage {
           .margin({ left: 16, right: 16, top: 20 })
           .type(ButtonType.Capsule)
           .width("90%")
+
+        Text($r('app.string.register_account'))
+          .fontSize(24)
+          .fontStyle(FontStyle.Normal)
+          .fontColor($r('app.color.login_title'))
+          .onClick(()=>{
+            let title:string = getContext(this).resourceManager.getStringSync($r('app.string.register_account'))
+            hilog.info(0x0001,'单击注册按钮->',title)
+          })
       }
       .width('100%')
       .height('100%')
       .alignItems(HorizontalAlign.Center)
       .align(Alignment.Center)
-    }
-    .height('100%')
   }
 }

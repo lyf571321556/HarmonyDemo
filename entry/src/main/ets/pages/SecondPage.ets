@@ -7,6 +7,10 @@ struct SecondPage {
   @State message: string = '我是第二个页面'
   params:string = router.getParams()?.['params'];
 
+  onPageShow(){
+    this.message =  router.getParams()?.['params'];
+  }
+
   build() {
     Row() {
       Column() {
