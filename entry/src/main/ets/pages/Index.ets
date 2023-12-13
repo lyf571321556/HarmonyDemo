@@ -27,6 +27,11 @@ struct Index {
           .onClick(() => {
             router.pushUrl({ url: 'pages/ContainerComponentsPage' })
           })
+        Button('列表组件使用')
+          .onClick(()=>{
+            router.pushUrl({url:'pages/ListComponentPage'})
+          })
+
       }
       .width('100%')
       .height('100%')

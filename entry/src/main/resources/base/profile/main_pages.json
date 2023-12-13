@@ -3,6 +3,7 @@
     "pages/Index",
     "pages/SecondPage",
     "pages/BasicComponentsPage",
-    "pages/ContainerComponentsPage"
+    "pages/ContainerComponentsPage",
+    "pages/ListComponentPage"
   ]
 }
