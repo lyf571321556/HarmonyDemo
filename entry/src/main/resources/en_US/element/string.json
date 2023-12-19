@@ -39,6 +39,14 @@
     {
       "name": "register_account",
       "value": "注册账号"
+    },
+    {
+      "name": "tab_title_home",
+      "value": "Home"
+    },
+    {
+      "name": "tab_title_me",
+      "value": "Me"
     }
   ]
 }
