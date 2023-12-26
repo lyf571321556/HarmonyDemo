@@ -7,19 +7,23 @@ struct Page {
   private dataSource: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
   private dataSourceProvider: GridDataSource = new GridDataSource();
   private tabsCotroller: TabsController = new TabsController();
+  @State currentTabIndex: number = 0;
 
-  @Builder generateTabBar() {
+  @Builder generateTabBar(title: Resource, tabBarIndex: number, normalBarImg: Resource, selectedBarImg: Resource) {
     Column() {
-      Image($r('app.media.app_icon'))
+      Image(tabBarIndex == this.currentTabIndex ? selectedBarImg : normalBarImg)
         .size({ width: 25, height: 25 })
-      Text($r('app.string.tab_title_me'))
+      Text(title)
         .fontColor('#6B6B6B')
     }
     .width('100%')
     .height(50)
+    .backgroundColor(Color.Brown)
     .justifyContent(FlexAlign.Center)
+    .align(Alignment.Center)
     .onClick(() => {
-      this.tabsCotroller.changeIndex(1);
+      this.currentTabIndex = tabBarIndex;
+      this.tabsCotroller.changeIndex(this.currentTabIndex);
     })
   }
 
@@ -28,6 +32,7 @@ struct Page {
       Text(this.message)
         .fontSize(25)
         .fontWeight(FontWeight.Bold)
+        .height('1%')
       List({ space: 10 }) {
         ForEach(this.dataSource, (item: number, index: number) => {
           ListItem(`${item}`) {
@@ -53,7 +58,7 @@ struct Page {
       }
       .listDirection(Axis.Horizontal)
       .backgroundColor(Color.Red)
-      .height(100)
+      .height('15%')
 
       Grid() {
         LazyForEach(this.dataSourceProvider, (item: number, index: number) => {
@@ -89,7 +94,7 @@ struct Page {
             .height('100%')
             .align(Alignment.Center)
         }
-        .tabBar($r('app.string.tab_title_home'))
+        .tabBar(this.generateTabBar($r('app.string.tab_title_home'), 0, $r('app.media.app_icon'), $r('app.media.close_icon')))
         .align(Alignment.Center)
 
         TabContent() {
@@ -99,19 +104,23 @@ struct Page {
             .align(Alignment.Center)
         }
         // .tabBar($r('app.string.tab_title_me'))
-        .tabBar(this.generateTabBar())
+        .tabBar(this.generateTabBar($r('app.string.tab_title_me'), 1, $r('app.media.app_icon'), $r('app.media.close_icon')))
         .align(Alignment.Center)
       }
-      .height('100%')
-      .width('100%')
-      .barHeight(50)
-      .barWidth('50%')
-      .barMode(BarMode.Scrollable)
-      .barPosition(BarPosition.Start)
+      // .height('55%')
+      // .width('100%')
+      .barHeight(200)
+      .barWidth(100)
+      // .barMode(BarMode.Fixed)
+      // .barPosition(BarPosition.Start)
       .backgroundColor(Color.Orange)
+      .vertical(true)
+      .onChange((index: number) => {
+        this.currentTabIndex = index;
+      })
     }
     .justifyContent(FlexAlign.Start)
-    .height('100%')
+    .height('64%')
     .backgroundColor(Color.White)
   }
 }
