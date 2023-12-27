@@ -16,9 +16,9 @@ struct Page {
       Text(title)
         .fontColor('#6B6B6B')
     }
-    .width('100%')
-    .height(50)
-    .backgroundColor(Color.Brown)
+    // .width('100%')
+    // .height(50)
+    .backgroundColor(Color.Pink)
     .justifyContent(FlexAlign.Center)
     .align(Alignment.Center)
     .onClick(() => {
@@ -32,7 +32,7 @@ struct Page {
       Text(this.message)
         .fontSize(25)
         .fontWeight(FontWeight.Bold)
-        .height('1%')
+        .height('4%')
       List({ space: 10 }) {
         ForEach(this.dataSource, (item: number, index: number) => {
           ListItem(`${item}`) {
@@ -87,40 +87,48 @@ struct Page {
       .columnsGap(10)
       .backgroundColor(Color.Green)
 
-      Tabs({ barPosition: BarPosition.Start, controller: this.tabsCotroller }) {
+      Tabs({ barPosition: BarPosition.End, controller: this.tabsCotroller }) {
         TabContent() {
           Text("主页")
             .width('100%')
             .height('100%')
             .align(Alignment.Center)
+            .textAlign(TextAlign.Center)
         }
-        .tabBar(this.generateTabBar($r('app.string.tab_title_home'), 0, $r('app.media.app_icon'), $r('app.media.close_icon')))
+        // .tabBar(this.generateTabBar($r('app.string.tab_title_home'), 0, $r('app.media.app_icon'), $r('app.media.close_icon')))
+        .tabBar(new BottomTabBarStyle($r('app.media.close_icon'), $r('app.string.tab_title_home')))
         .align(Alignment.Center)
+        .backgroundColor(Color.Orange)
 
         TabContent() {
           Text("我")
             .width('100%')
             .height('100%')
             .align(Alignment.Center)
+            .textAlign(TextAlign.Center)
         }
         // .tabBar($r('app.string.tab_title_me'))
-        .tabBar(this.generateTabBar($r('app.string.tab_title_me'), 1, $r('app.media.app_icon'), $r('app.media.close_icon')))
+        // .tabBar(this.generateTabBar($r('app.string.tab_title_me'), 1, $r('app.media.app_icon'), $r('app.media.close_icon')))
+        // .tabBar(new SubTabBarStyle($r('app.string.tab_title_me')))
+        .tabBar(new BottomTabBarStyle($r('app.media.app_icon'), $r('app.string.tab_title_me')))
         .align(Alignment.Center)
+        .backgroundColor(Color.Brown)
       }
-      // .height('55%')
-      // .width('100%')
-      .barHeight(200)
-      .barWidth(100)
-      // .barMode(BarMode.Fixed)
+      // .width('40%')
+      .height('61%')
+      // .barHeight(200)
+      // .barWidth(50)
+      .barMode(BarMode.Fixed)
       // .barPosition(BarPosition.Start)
-      .backgroundColor(Color.Orange)
-      .vertical(true)
+      .backgroundColor(Color.White)
+      .vertical(false)
       .onChange((index: number) => {
         this.currentTabIndex = index;
       })
     }
     .justifyContent(FlexAlign.Start)
-    .height('64%')
+    .align(Alignment.Center)
+    .height('100%')
     .backgroundColor(Color.White)
   }
 }
